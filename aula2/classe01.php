@@ -1,21 +1,24 @@
 <?php
 
 class Produto {
+   const IMPOSTO = 0.1;
+   private static int $total = 0; //compartilhar entre os objetos
 
-    const IMPOSTO = 0.1;
-    private static int $total = 0;
-
-    public function __construct (public string $nome){
+   public function __construct(public string $nome) {
         self::$total++;
-    }
-    
-    public static function quantidade(): int {
+   }
+
+   public static function quantidade(): int {
         return self::$total;
-    }
+   }
+
 }
 
+new Produto("Camiseta"); new Produto("Boné");
 
-new Produto("Camiseta");
-new Produto("Boné"); 
 echo Produto::quantidade(). " produtos <br>";
-echo "Imposto: " . Produto::IMPOSTO;
+echo "Imposto " . Produto::IMPOSTO;
+
+
+
+
